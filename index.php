@@ -1,0 +1,222 @@
+<?php
+
+// Déclaration PDO
+$pdo = new PDO('mysql:host=localhost;dbname=portfolio', 'root', '', array(
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+));
+
+// Requêtes langages
+$resultat = $pdo->query("SELECT * FROM langages WHERE type = 'front'");
+$frontLangages = $resultat->fetchAll();
+
+$resultat = $pdo->query("SELECT * FROM langages WHERE type = 'back'");
+$backLangages = $resultat->fetchAll();
+
+// Requête realisations
+$resultat = $pdo->query("SELECT * FROM realisations");
+$realisations = $resultat->fetchAll();
+
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>CV Julie Galland</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- CSS -->
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/mySlider.css" rel="stylesheet">
+
+	</head>
+	<body data-spy="scroll" data-target=".navbar">
+
+		<!-- *****  Début de la NAV ***** -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container" id="navbar">
+
+           <!-- Navbar header -->
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+             </button>
+             <a  class="js-scrollTo page-scroll" href="#"><div class="navbar-brand navbar-brand-left">Julie Galland</div></a>
+           </div>
+
+           <!-- Navbar body -->
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+             <ul class="nav navbar-nav">
+               <li class="active"><a id="myBar" class="js-scrollTo page-scroll" href="#link_langages">Compétences<span class="sr-only">(current)</span></a></li>
+               <li><a  class="js-scrollTo page-scroll"  href="#link_realisations">Réalisations</a></li>
+               <li><a  class="js-scrollTo page-scroll" href="#link_experience">Expérience</a></li>
+               <li><a class="js-scrollTo page-scroll"  href="#link_contact">Contact</a></li>
+             </ul>
+           </div>
+         </div><!-- fin du container -->
+       </nav>
+		<!-- *****  Fin de la NAV ***** -->
+
+		<!-- *****  Début du Header ***** -->
+		<header>
+			<div class="container" id="header">
+				<h2 class="text-center">Julie Galland</h2>
+				<h1 class="text-center">Développeuse-Intégratrice Web</h1>
+			</div>
+
+			<!-- *****  Début de la section accordéon A propos ***** -->
+			<button class="accordeon center-block"><strong>A propos...</strong></button>
+			<div class="container panneau">
+					<h3 class="text-center">Bonjour, bienvenue sur mon portfolio!</h3>
+					<p>Fraichement reconvertie en tant que développeuse et intégratrice web, je cherche actuellement une entreprise pour m'aider à grandir dans cette voie.
+Ancienne restauratrice d'œuvres d'art, puis professeur des écoles, mes choix peuvent paraître éloignés, mais ils ont en commun de proposer sans cesse de nouveaux défis! Toujours avide d'apprendre, j'aime chercher de nouvelles solutions. Et avec la programmation, je suis servie! Ma formation chez WebForce3 a été une véritable révélation et je suis plus motivée que jamais pour vous prouver que j'ai ma place dans la grande famille des développeurs.</p>
+					<button class="center-block"><a href="#">Télécharger mon CV</a></button>
+			</div><!-- *****  Fin de A propos ***** -->
+
+		</header>
+		<!-- *****  Fin du Header ***** -->
+
+		<main>				
+			<!-- *****  Début de la section Langages ***** -->
+			<section>
+				<div id="link_langages"></div>
+				<div class="container" id="langages">
+					<h2 class="text-center">Compétences Techniques</h2>
+
+					<h3>Front</h3>
+					<div class="row">
+						<!-- Boucle langage front -->
+						<?php foreach ($frontLangages as $front): ?>
+							<?php extract($front)?>
+							<div class="col-sm-4 col-md-3">
+								<div class="thumbnail">
+									<div class="figure"><img src="img/<?=$logo?>" alt="<?=$nom?>" class="center-block"></div>
+									<div class="caption text-center">
+										<div class="progress" id="webLangages">
+											<div class="progress-bar" role="progressbar" aria-valuenow="<?=$niveau?>" aria-valuemin="0" aria-valuemax="100" ><?=$niveau?></div>
+										</div>
+									</div>
+								</div> <!-- fin du thumbnail -->
+							</div> <!-- fin du col-md-4 -->
+						<?php endforeach;?>
+					</div> <!-- fin de la row -->
+
+					<h3>Back</h3>
+					<div class="row">
+						<!-- Boucle langage back-->
+						<?php foreach ($backLangages as $back): ?>
+							<?php extract($back)?>
+							<div class="col-sm-4 col-md-3">
+								<div class="thumbnail">
+									<div class="figure"><img src="img/<?=$logo?>" alt="<?=$nom?>" class="center-block"></div>
+									<div class="caption text-center">
+										<div class="progress" id="webLangages">
+											<div class="progress-bar" role="progressbar" aria-valuenow="<?=$niveau?>" aria-valuemin="0" aria-valuemax="100" ><?=$niveau?></div>
+										</div>
+									</div>
+								</div> <!-- fin du thumbnail -->
+							</div> <!-- fin du col-md-4 -->
+						<?php endforeach;?>
+					</div> <!-- fin de la row -->
+
+					<h3>Petits plus</h3>
+					<div class="row">
+							<span>GitHub</span>
+							<span>Anglais</span>
+							<span>Italien</span>
+							<span>Photoshop</span>
+							<span>Autocad</span>
+					</div> <!-- fin de la row -->
+
+				</div> <!-- fin du container -->
+			</section> <!-- *****  Fin de la section Langages ***** -->
+
+			<!-- *****  Début de la section Réalisations ***** -->
+			<section>
+				<div id="link_realisations"></div>
+				<div class="container" id="realisations">
+					<h2 class="text-center">Mes réalisations</h2>
+					
+					<div class="row">
+						<!-- Boucle réalisations -->
+						<?php foreach ($realisations as $realisation): ?>
+							<?php extract($realisation)?>
+							<div class="col-sm-6 col-md-4">
+								<div class="thumbnail vignette">
+									<img src="realisations/<?=$photo?>" alt="<?=$titre?>" class="center-block">
+									<div class="middle">
+										<div class="text text-center">En savoir +</div>
+									</div>
+								</div> <!-- fin du thumbnail -->
+							</div> <!-- fin du col-md-4 -->
+						<?php endforeach;?>
+					</div> <!-- fin de la row -->
+
+				</div> <!-- fin du container -->
+			</section> <!-- *****  Fin de la section Réalisations ***** -->
+
+			<!-- *****  Début de la section Expériences ***** -->
+			<section>
+				<div id="link_experience"></div>
+				<div class="container" id="experience">
+					<h2 class="text-center">Mes précédentes expériences</h2>
+					<p>Mon expérience est atypique... je suis riche d'un passé professionnel varié qui, avec le recul, n'as fait que renforcer la développeuse que je suis maintenant</p>
+
+					<h3>Cursus scolaire</h3>
+					<h3>La formation WebForce3</h3>
+					<h3>En autodidacte</h3>
+
+				</div>
+			</section>
+			<!-- *****  Fin de la section Experiences ***** -->
+
+			<!-- *****  Début de la section Contact ***** -->
+			<section>
+				<div id="link_contact"></div>
+				<div class="container" id="contact">
+					<h2 class="text-center">Contactez-moi !</h2>
+					<form method="post" action="formulaire.php">
+
+						<div class="form-group">
+							<label>Nom</label>
+							<input type="text" class="form-control" placeholder="Nom">
+						</div>
+
+						<div class="form-group">
+							<label>Prénom</label>
+							<input type="text" class="form-control" placeholder="prenom">
+						</div>
+
+						<div class="form-group">
+							<label>Message</label>
+							<textarea name="message" class="form-control" placeholder="Votre message ici..."></textarea>
+						</div>
+
+					  <button type="submit" class="btn btn-default">Envoyer</button>
+					</form>
+				</div>
+			</section>
+			<!-- *****  Fin de la section Contact ***** -->
+
+		</main>
+		<footer>
+			<div class="container">
+				© 2017 Julie Galland
+			</div>
+		</footer>
+
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Mon script -->
+	<script src="js/script.js"></script>
+
+	</body>
+</html>
