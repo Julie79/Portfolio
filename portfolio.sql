@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 06 fév. 2018 à 17:35
--- Version du serveur :  10.1.22-MariaDB
--- Version de PHP :  7.1.4
+-- Généré le :  jeu. 22 mars 2018 à 09:55
+-- Version du serveur :  10.1.29-MariaDB
+-- Version de PHP :  7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -75,7 +75,9 @@ INSERT INTO `realisations` (`id`, `titre`, `description`, `photo`, `extrait`) VA
 (1, 'Licornes', 'Réalisation d\'une page en html/css d\'après maquette.', 'licornes.png', 'extrait_licornes.png'),
 (2, 'Chats', 'Utilisation du framework Bootstrap.', 'chats.png', 'extrait_chats.png'),
 (3, 'VTC', 'Réalisation d\'un site en PHP avec des pages inclusives.', 'vtc.png', 'extrait_vtc.png'),
-(4, 'SalleA', 'Réalisation d\'un site d\'e-commerce multi-pages avec PHP et Ajax.', 'sallea.png', 'extrait_sallea.png');
+(4, 'SalleA', 'Réalisation d\'un site d\'e-commerce multi-pages avec PHP et Ajax.', 'sallea.png', 'extrait_sallea.png'),
+(5, 'Sliders', 'Création d\'un carrousel à l\'aide de Javascript', 'sliders.png', ''),
+(6, 'MaBoutique', 'Intégration HTML, CSS d\'après maquette', '', '');
 
 --
 -- Index pour les tables déchargées
@@ -102,11 +104,13 @@ ALTER TABLE `realisations`
 --
 ALTER TABLE `langages`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT pour la table `realisations`
 --
 ALTER TABLE `realisations`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

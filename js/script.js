@@ -1,10 +1,10 @@
-// PANNEAU ACCORDEON
+// ANIMER LE PANNEAU ACCORDEON DU HEADER
 $(".accordeon").click(function(){
     $(".panneau").slideToggle();
 });
 
 
-// ANIMER LES PROGRESS-BAR
+// ANIMER LES PROGRESS-BAR DE LA SECTION LANGAGES
 // Déclarartion de la fonction
 function loadBar(){
     var delay = 500;
@@ -43,7 +43,37 @@ $(function () {
 
 });
 
-// ANIMATION DES THUMBNAILS
-$('.middle').click(function(){
-    $('this').show();
+
+// ANIMATION DES LIGHTBOX DE LA SECTION REALISATIONS
+// ouvrir les lightbox
+$('#overlay1').click(function(){
+    $("#lightbox1").fadeIn();
 })
+$('#overlay2').click(function(){
+    $("#lightbox2").fadeIn();
+})
+$('#overlay3').click(function(){
+    $("#lightbox3").fadeIn();
+})
+$('#overlay4').click(function(){
+    $("#lightbox4").fadeIn();
+})
+$('#overlay5').click(function(){
+    $("#lightbox5").fadeIn();
+})
+
+// fermer avec la croix
+$('.close').click(function(){
+    $(".lightbox").hide();
+})
+
+// ANIMER LES BOITES DE LA SECTION EXPERIENCES
+$("#boite1").click(function(){
+    $("#reveal1").slideToggle();
+});
+$("#boite2").click(function(){
+    $("#reveal2").slideToggle();
+});
+$("#boite3").click(function(){
+    $("#reveal3").slideToggle();
+});
